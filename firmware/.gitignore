@@ -1,0 +1,6 @@
+*.xml.inc
+*.xml.inc.c
+*.o
+*.elf
+*.lst
+*.bin

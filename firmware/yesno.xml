@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<descriptor xmlns="http://digimend.sourceforge.net"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xsi:schemaLocation="http://digimend.sourceforge.net hidrd.xsd">
+
+  <usage_page>desktop</usage_page>
+  <usage>desktop_keypad</usage>
+
+  <COLLECTION type="application">
+
+    <!-- All values are boolean flags -->
+    <logical_minimum>0</logical_minimum>
+    <logical_maximum>1</logical_maximum>
+
+    <!-- Unused bits -->
+    <report_size>6</report_size>
+    <report_count>1</report_count>
+    <input><constant/></input>
+
+    <!-- Keys -->
+    <report_size>1</report_size>
+    <report_count>2</report_count>
+    <usage_page>keyboard</usage_page>
+    <usage>keyboard_kb_y</usage>
+    <usage>keyboard_kb_n</usage>
+    <input><variable/></input>
+
+  </COLLECTION>
+
+</descriptor>
