@@ -33,6 +33,16 @@ usbMsgLen_t usbFunctionSetup ( uint8_t data[8] ) {
 }
 
 /**
+ * Handle pin change interrupt
+ *
+ */
+ISR ( KEY_PCINTx_vect ) {
+
+	/* Read keys */
+	report.keys = ( ( ~KEY_PINX ) & KEY_BITS );
+}
+
+/**
  * Main program
  *
  */
@@ -44,6 +54,10 @@ int main ( void ) {
 
 	/* Enable pull-up resistors */
 	KEY_PORTX = KEY_BITS;
+
+	/* Enable pin change interrupt */
+	KEY_PCMSKX = KEY_BITS;
+	PCICR = _BV ( KEY_PCIEX );
 
 	/* Initialise V-USB library */
 	usbInit();
@@ -64,9 +78,6 @@ int main ( void ) {
 
 		/* Kick watchdog */
 		wdt_reset();
-
-		/* Read keys */
-		report.keys = ( ( ~KEY_PINX ) & KEY_BITS );
 
 		/* Poll USB */
 		usbPoll();
