@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <avr/wdt.h>
 #include <avr/interrupt.h>
+#include <avr/sleep.h>
 #include <util/delay.h>
 #include "v-usb/usbdrv/usbdrv.h"
 #include "usbconfig.h"
@@ -87,5 +88,8 @@ int main ( void ) {
 			usbSetInterrupt ( ( void * ) &report,
 					  sizeof ( report ) );
 		}
+
+		/* Go back to sleep */
+		sleep_mode();
 	}
 }
