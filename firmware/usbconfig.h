@@ -51,4 +51,16 @@
 /** Use our HID report descriptor */
 #define USB_CFG_DESCR_PROPS_HID_REPORT USB_PROP_IS_DYNAMIC
 
+/** Vendor name */
+#define USB_CFG_VENDOR_NAME 'A', 'n', 'y', 'K', 'e', 'y'
+
+/** Vendor name length */
+#define USB_CFG_VENDOR_NAME_LEN 6
+
+/** Device name */
+#define USB_CFG_DEVICE_NAME 'K', 'e', 'y', 'p', 'a', 'd'
+
+/** Device name length */
+#define USB_CFG_DEVICE_NAME_LEN 6
+
 #endif /* _USBCONFIG_H */
