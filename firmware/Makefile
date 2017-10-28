@@ -1,5 +1,10 @@
-HZ		= 20000000
-MCU		= atmega168
+BOARD		= tiny8
+
+HZ_tiny8	= 16500000
+MCU_tiny8	= attiny85
+
+HZ		= $(HZ_$(BOARD))
+MCU		= $(MCU_$(BOARD))
 
 CROSS		= avr-
 CC		= $(CROSS)gcc
@@ -13,7 +18,7 @@ HIDRD_CONVERT	= hidrd-convert
 AVRDUDE		= avrdude
 
 CFLAGS		+= -Os -g -W -Wall -Wextra -Werror -I.
-CFLAGS		+= -mmcu=$(MCU) -DF_CPU=$(HZ)
+CFLAGS		+= -mmcu=$(MCU) -DF_CPU=$(HZ) -DBOARD=$(BOARD)
 ASFLAGS		+=
 
 HEADERS		:= $(wildcard *.h v-usb/usbdrv/*.h)
@@ -38,7 +43,7 @@ all : yesno.bin
 %.s : v-usb/usbdrv/%.S $(HEADERS) Makefile
 	$(CC) -E $(CFLAGS) -o $@ $<
 
-%.elf : %.xml.inc.o anykey.o usbdrv.o usbdrvasm.o Makefile
+%.elf : %.xml.inc.o anykey.o $(BOARD).o usbdrv.o usbdrvasm.o Makefile
 	$(CC) $(CFLAGS) -o $@ $(filter-out Makefile,$^)
 	$(SIZE) $@
 

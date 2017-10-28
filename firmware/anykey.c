@@ -9,7 +9,7 @@
 #include "anykey.h"
 
 /** HID report */
-static struct anykey_report report;
+struct anykey_report report;
 
 /**
  * Handle HID-specific requests
@@ -34,16 +34,6 @@ usbMsgLen_t usbFunctionSetup ( uint8_t data[8] ) {
 }
 
 /**
- * Handle pin change interrupt
- *
- */
-ISR ( KEY_PCINTx_vect ) {
-
-	/* Read keys */
-	report.keys = ( ( ~KEY_PINX ) & KEY_BITS );
-}
-
-/**
  * Main program
  *
  */
@@ -53,12 +43,8 @@ int main ( void ) {
 	/* Reset watchdog */
 	wdt_enable ( WDTO_1S );
 
-	/* Enable pull-up resistors */
-	KEY_PORTX = KEY_BITS;
-
-	/* Enable pin change interrupt */
-	KEY_PCMSKX = KEY_BITS;
-	PCICR = _BV ( KEY_PCIEX );
+	/* Perform board-specific initialisation */
+	init_board();
 
 	/* Initialise V-USB library */
 	usbInit();

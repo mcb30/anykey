@@ -12,11 +12,6 @@
     <logical_minimum>0</logical_minimum>
     <logical_maximum>1</logical_maximum>
 
-    <!-- Unused bits -->
-    <report_size>6</report_size>
-    <report_count>1</report_count>
-    <input><constant/></input>
-
     <!-- Keys -->
     <report_size>1</report_size>
     <report_count>2</report_count>
@@ -24,6 +19,11 @@
     <usage>keyboard_kb_y</usage>
     <usage>keyboard_kb_n</usage>
     <input><variable/></input>
+
+    <!-- Unused bits -->
+    <report_size>6</report_size>
+    <report_count>1</report_count>
+    <input><constant/></input>
 
   </COLLECTION>
 

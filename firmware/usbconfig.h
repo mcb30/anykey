@@ -1,14 +1,9 @@
 #ifndef _USBCONFIG_H
 #define _USBCONFIG_H
 
-/** Attach USB bus via port D */
-#define USB_CFG_IOPORTNAME D
-
-/** Attach USB D+ pin to D2 */
-#define USB_CFG_DPLUS_BIT 2
-
-/** Attach USB D- pin to D4 */
-#define USB_CFG_DMINUS_BIT 4
+/* Include per-board header file */
+#define BOARD_HEADER <BOARD.h>
+#include BOARD_HEADER
 
 /** Provide an interrupt IN endpoint for HID reports */
 #define USB_CFG_HAVE_INTRIN_ENDPOINT 1
