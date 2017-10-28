@@ -17,7 +17,7 @@ CAT		= cat
 HIDRD_CONVERT	= hidrd-convert
 AVRDUDE		= avrdude
 
-CFLAGS		+= -Os -g -W -Wall -Wextra -Werror -I.
+CFLAGS		+= -flto -Os -g -W -Wall -Wextra -Werror -I.
 CFLAGS		+= -mmcu=$(MCU) -DF_CPU=$(HZ) -DBOARD=$(BOARD)
 ASFLAGS		+=
 
