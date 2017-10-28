@@ -22,8 +22,10 @@ CFLAGS		+= -mmcu=$(MCU) -DF_CPU=$(HZ) -DBOARD=$(BOARD)
 ASFLAGS		+=
 
 HEADERS		:= $(wildcard *.h v-usb/usbdrv/*.h)
+XMLS		:= $(wildcard *.xml)
+BINS		:= $(patsubst %.xml,%.bin,$(XMLS))
 
-all : yesno.bin
+all : $(BINS)
 
 %.xml.inc : %.xml Makefile
 	$(HIDRD_CONVERT) -i xml -o code $< $@
